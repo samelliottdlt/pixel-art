@@ -161,7 +161,7 @@ const colors = [
 ];
 
 //  Unique-ness
-colors = [...new Set(colors)];
+//colors = [...new Set(colors)];
 
 export class ColorSelector extends Component {
 
