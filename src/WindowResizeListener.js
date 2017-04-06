@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/debounceTime';
 
 export class WindowResizeListener extends Component {
@@ -13,17 +14,14 @@ export class WindowResizeListener extends Component {
 
   componentDidMount() {
     Observable.fromEvent(window, 'resize')
-      .debounceTime(250)
+      .debounceTime(100)
+      .filter(event => this.state.height < event.target.innerHeight || this.state.width < event.target.innerWidth)
       .subscribe((event) => {
-        this.windowResized(event);
+        this.setState({
+          height: Math.max(this.state.height, event.target.innerHeight), 
+          width:  Math.max(this.state.width, event.target.innerWidth)
+        });
       });
-  }
-
-  windowResized = (event) => {
-    this.setState({
-      height: window.innerHeight,
-      width: window.innerWidth
-    })
   }
 
   render() {

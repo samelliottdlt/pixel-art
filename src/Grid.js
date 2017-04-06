@@ -1,42 +1,32 @@
-import React, { Component } from 'react';
-import { Layer, Rect, Stage, Group} from 'react-konva';
+import React from 'react';
+import { Group } from 'react-konva';
 
-export class ColorGrid extends Component {
-  cells = {}
+import { Cell } from './Cell'
 
-  shouldComponentUpdate() {
-    return false;
-  }
+export const ColorGrid = ({colors, cellSize, cellSelected, updateCell, colorSelected}) =>
+(
+  <Group>
+    {
+      colors.map(
+        (row, rowIndex) => row.map(
+          (cellColor, colIndex) =>
+            <Cell 
+              cellSize={cellSize}
+              rowIndex={rowIndex}
+              colIndex={colIndex}
+              initialColor={cellColor}
+              colorSelected={colorSelected}
+            />
+        )
+      )
+    }
+  </Group>
+)
 
-  render() {
-    const {colors, cellSize, cellSelected, updateCell} = this.props;
-    let self = this;
-    return (
-      <Group>
-        {
-          colors.map(
-            (row, rowIndex) => row.map(
-              (cellColor, cellIndex) =>
-                <Rect
-                  x={rowIndex * cellSize} y={cellIndex * cellSize}
-                  height={cellSize} width={cellSize}
-                  fill={colors[rowIndex][cellIndex]}
-                  ref={(node) => { self.cells['r'+rowIndex.toString()+'c'+cellIndex.toString()] = node}}
-                  onMouseOver={(evt) => updateCell(rowIndex, cellIndex, self.cells['r'+rowIndex.toString()+'c'+cellIndex.toString()])}
-                  onClick={(evt) => updateCell(rowIndex, cellIndex, self.cells['r'+rowIndex.toString()+'c'+cellIndex.toString()])}
-                />
-            )
-          )
-        }
-      </Group>
-    )
-  }
-}
-
-export const initalGridState = (cellSize) => {
+export const defaultGridState = (cellSize, dimensions) => {
   const result = [];
-  const rowAmount = window.screen.width / (cellSize);
-  const cellAmount = window.screen.height / (cellSize);
+  const rowAmount = dimensions.width / (cellSize);
+  const cellAmount = dimensions.height / (cellSize);
   for(let i = 0; i < rowAmount; i++) {
     const row = [];
     for(let j = 0; j < cellAmount; j++) {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const ColorSelectorContainer = styled.section`
@@ -38,23 +38,18 @@ const colors = [
   'rgb(130, 0, 128)'
 ];
 
-export class ColorSelector extends Component {
+export let selectedColor = 'rgb(34, 34, 34)';
 
-  colorSelected = (color) => {
-    this.props.colorSelected(color);
-  }
+export const ColorSelector =() => (
+  <ColorSelectorContainer>
+    {
+      colors.map(color =>
+        <ColorBlock
+          backgroundColor={color} key={color} style={{backgroundColor: color}}
+          onClick={() => selectedColor = color}
+        />
+      )
+    }
+  </ColorSelectorContainer>
+)
 
-  render() {
-    return (
-      <ColorSelectorContainer>
-        {
-          colors.map(color =>
-            <ColorBlock
-              backgroundColor={color} key={color} style={{backgroundColor: color}}
-              onClick={() => this.colorSelected(color)}
-            />)
-        }
-      </ColorSelectorContainer>
-    )
-  }
-}
