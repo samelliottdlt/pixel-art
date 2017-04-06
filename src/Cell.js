@@ -25,6 +25,7 @@ export class Cell extends Component {
         fill={ initialColor }
         ref='cell'
         onClick={() => this.updateCell()}
+        onTap={() => this.updateCell()}
       />
     )
   }

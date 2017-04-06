@@ -8,6 +8,7 @@
     "react-dom": "^15.4.2",
     "react-konva": "^1.1.1",
     "react-redux": "^5.0.3",
+    "react-tappable": "^0.8.4",
     "redux": "^3.6.0",
     "rxjs": "^5.2.1-smooth",
     "styled-components": "^1.4.4"

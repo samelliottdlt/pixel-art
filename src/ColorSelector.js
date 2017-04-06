@@ -8,6 +8,9 @@ const ColorSelectorContainer = styled.section`
   z-index: 1;
   width: 100%;
   text-align: center;
+  @media (max-width: 600px) {
+    overflow: auto;
+  }
 `;
 
 const ColorBlock = styled.div`
