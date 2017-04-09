@@ -24,12 +24,12 @@ export const ColorGrid = ({colors, cellSize, cellSelected, updateCell, colorSele
 )
 
 let memoizedResult = null;
+const defaultColors = {
+  primary: 'lightgrey',
+  alternate: 'white'
+}
 
 export const defaultGridState = (cellSize, dimensions) => {
-  const colors = {
-    primary: 'lightgrey',
-    alternate: 'white'
-  }
   const result = memoizedResult ? memoizedResult : [];
   const colAmount = dimensions.width / (cellSize);
   const cellAmount = dimensions.height / (cellSize);
@@ -37,12 +37,12 @@ export const defaultGridState = (cellSize, dimensions) => {
     const col = [];
     for(let j = memoizedResult && memoizedResult[i] ? memoizedResult[i].length : 0 ; j < cellAmount; j++) {
       if(i%2) {
-        if(j%2) col.push(colors.primary)
-        else col.push(colors.alternate);
+        if(j%2) col.push(defaultColors.primary)
+        else col.push(defaultColors.alternate);
       }
       else {
-        if(j%2) col.push(colors.alternate)
-        else col.push(colors.primary);
+        if(j%2) col.push(defaultColors.alternate)
+        else col.push(defaultColors.primary);
       }
     }
     if(!!memoizedResult) {
