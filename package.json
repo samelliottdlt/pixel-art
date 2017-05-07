@@ -9,12 +9,14 @@
     "react-dom": "^15.4.2",
     "react-konva": "^1.1.1",
     "rxjs": "^5.2.1-smooth",
+    "serve": "^5.1.4",
     "styled-components": "^1.4.4"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
   },
   "scripts": {
+    "now-start": "serve -s build/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
