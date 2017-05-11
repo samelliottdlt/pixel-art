@@ -3,13 +3,7 @@ import { Group } from "react-konva";
 
 import { Cell } from "./Cell";
 
-export const ColorGrid = ({
-  colors,
-  cellSize,
-  cellSelected,
-  updateCell,
-  selectedColor
-}) => (
+export const ColorGrid = ({ colors, cellSize, dimensions, selectedColor }) => (
   <Group>
     {colors.map((row, rowIndex) =>
       row.map((cellColor, colIndex) => (
