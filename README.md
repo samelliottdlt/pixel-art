@@ -1,6 +1,6 @@
 Create pixel art. Inspired by /r/place
 
-Check it out here: https://createpixelart.com/
+Check it out here: https://www.makepixelart.dev/
 
 # Hall of OK
 
